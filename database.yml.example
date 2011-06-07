@@ -1,5 +1,0 @@
-adapter: mysql
-host: localhost
-username: root
-name: coming_soon_development
-password:

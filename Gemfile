@@ -1,9 +1,10 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'rack'
+gem 'rack', '1.2.1'
 gem 'activerecord', '3.0.3'
-gem 'fastercsv'
+#gem 'fastercsv'
+gem 'sqlite3'
 
 group :test do
   gem 'database_cleaner'

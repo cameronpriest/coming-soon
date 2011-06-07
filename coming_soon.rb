@@ -1,16 +1,17 @@
 require 'sinatra/base'
 require 'active_record'
-require 'fastercsv'
+# require 'fastercsv'
 
 require 'csv'
-if CSV.const_defined? :Reader
-  # Ruby 1.8
-  require 'fastercsv'
-  CSVKLASS = FasterCSV
-else
-  # Ruby 1.9, FasterCSV merged in stdlib
-  CSVKLASS = CSV
-end
+# if CSV.const_defined? :Reader
+#   # Ruby 1.8
+#   # require 'fastercsv'
+#   CSVKLASS = FasterCSV
+# else
+#   # Ruby 1.9, FasterCSV merged in stdlib
+# end
+
+CSVKLASS = CSV
 
 
 def load_configuration(file, name)
@@ -75,7 +76,7 @@ class ComingSoon < Sinatra::Base
 
   get '/backstage/csv' do
     protected!
-    csv_content = FasterCSV.generate do |csv|
+    csv_content = CSV.generate do |csv|
       User.find_each do |user|
         csv << [user.email]
       end
